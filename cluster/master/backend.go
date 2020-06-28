@@ -770,8 +770,8 @@ func (s *QKCMasterBackend) disPlayPeers() {
 		for true {
 			time.Sleep(disPlayPeerInfoInterval)
 			peers := s.protocolManager.peers.Peers()
-			log.Info(s.logInfo, "remote addr", len(peers))
-
+			inBlackList, outBlackList := s.srvr.GetBlackList()
+			log.Info(s.logInfo, "peer number", len(peers), "inBlockList", inBlackList, "outBlackList", outBlackList)
 		}
 	}()
 

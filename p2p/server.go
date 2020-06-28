@@ -1102,6 +1102,6 @@ func (srv *Server) GetKadRoutingTable() []string {
 	return srv.ntab.GetKadRoutingTable()
 }
 
-func (srv *Server) GetBlockList() (map[string]int64, map[string]int64) {
+func (srv *Server) GetBlackList() (map[string]int64, map[string]int64) {
 	return srv.blackNodeFilter.GetDialBlackList()
 }

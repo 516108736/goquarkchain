@@ -183,7 +183,7 @@ jobs:
           folder=release/$rep/${ref:10}/
 
           echo $folder
-          mkdir -p folder
+          mkdir -p $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/ folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/ folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/ folder

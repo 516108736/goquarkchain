@@ -18,7 +18,6 @@ type BlackFilter interface {
 	AddDialoutBlacklist(string)
 	ChkDialoutBlacklist(string) bool
 	PeriodicallyUnblacklist()
-
 	GetDialBlackList() (map[string]int64, map[string]int64)
 }
 
@@ -65,7 +64,7 @@ func (pm *blackNodes) AddDialoutBlacklist(ip string) {
 func (pm *blackNodes) GetDialBlackList() (map[string]int64, map[string]int64) {
 	pm.mu.RLock()
 	defer pm.mu.RUnlock()
-	return pm.dialoutBlacklist, pm.dialinBlacklist
+	return pm.dialinBlacklist, pm.dialoutBlacklist
 }
 
 func (pm *blackNodes) GetDialInBlockList() map[string]int64 {
