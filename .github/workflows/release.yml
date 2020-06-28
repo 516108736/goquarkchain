@@ -181,19 +181,11 @@ jobs:
           ref=${{ github.ref }}
           rep=${{ github.repository }}
           folder=release/$rep/${ref:10}/
-
-          echo $folder
           mkdir -p $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/ $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/ $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/ $folder
           echo ${ref:10} > release/$rep/LATEST
-
-          echo "0000"
-          ls
-          echo "11111"
-          ls $folder
-          echo "222"
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -203,7 +195,4 @@ jobs:
       - name: Deploy static site to S3 bucket
         run: |
           sudo apt-get install awscli
-          echo "111"
-          ls
-          echo "22222"
           aws s3 sync release/ s3://qkcmainnet-go/data/ --acl public-read
