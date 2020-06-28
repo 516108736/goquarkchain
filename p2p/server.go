@@ -22,12 +22,13 @@ import (
 	"crypto/ecdsa"
 	"encoding/hex"
 	"errors"
-	"github.com/QuarkChain/goquarkchain/p2p/nodefilter"
 	"net"
 	"sort"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/QuarkChain/goquarkchain/p2p/nodefilter"
 
 	"github.com/QuarkChain/goquarkchain/p2p/discover"
 	"github.com/ethereum/go-ethereum/common"
@@ -1099,4 +1100,8 @@ func (srv *Server) PeersInfo() []*PeerInfo {
 
 func (srv *Server) GetKadRoutingTable() []string {
 	return srv.ntab.GetKadRoutingTable()
+}
+
+func (srv *Server) GetBlockList() (map[string]int64, map[string]int64) {
+	return srv.blackNodeFilter.GetDialBlackList()
 }
