@@ -202,7 +202,7 @@ jobs:
           echo "001"
           pwd
           echo "002"
-          cp ${ref:10}.zip release/$rep/
+          cp $release/$rep/${ref:10}.zip release/$rep/
           echo $folder
           echo "111"
           ls
