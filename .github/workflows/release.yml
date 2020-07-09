@@ -193,10 +193,10 @@ jobs:
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
 
-          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
-          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
-          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
-          
+          chmod -R 0755 /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
+          chmod -R 0755 /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
+          chmod -R 0755 /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
+
           cd /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ && zip -r ${ref:10}.zip ubuntu18/ centos8/  windows/ && cd -
           cp /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/${ref:10}.zip  release/$rep/
           echo ${ref:10} > release/$rep/LATEST
