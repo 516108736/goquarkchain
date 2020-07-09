@@ -2,7 +2,7 @@ name: release
 on:
   push:
     tags:
-      - mainnet*
+      - v*
 
 
 jobs:
@@ -127,6 +127,8 @@ jobs:
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/ release/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/ release/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/ release/
+          cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json  release/
+          cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh release/
           zip -r release.zip release
 
       - name: Create Release
@@ -195,4 +197,4 @@ jobs:
       - name: Deploy static site to S3 bucket
         run: |
           sudo apt-get install awscli
-          aws s3 sync release/ s3://qkcmainnet-go/data/ --acl public-read
+          aws s3 sync release/ s3://qkcmainnet-go/data/release --acl public-read
