@@ -184,26 +184,21 @@ jobs:
           ref=${{ github.ref }}
           rep=${{ github.repository }}
           folder=release/$rep/
-          echo $ref
-          echo $rep
-          mkdir -p $folder
 
+          mkdir -p $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
-          echo "000"
+
+          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
+          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
+          chown -R /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
+          
           cd /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ && zip -r ${ref:10}.zip ubuntu18/ centos8/  windows/ && cd -
-          echo "001"
-          pwd
-          echo "002"
           cp /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/${ref:10}.zip  release/$rep/
-          ls release/$rep/
-          echo "111"
-          ls
-          echo "222"
           echo ${ref:10} > release/$rep/LATEST
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
