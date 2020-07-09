@@ -198,9 +198,9 @@ jobs:
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/ $folder
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/ $folder
           echo "000"
-          zip -r ${ref:10}.zip $folder
+          zip -r ${ref:10}.zip $folder/*
           echo "001"
-          cp ${ref:10}.zip release/
+          cp ${ref:10}.zip release/$rep/
           echo $folder
           echo "111"
           ls
