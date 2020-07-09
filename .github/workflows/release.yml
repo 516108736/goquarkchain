@@ -183,27 +183,24 @@ jobs:
         run: |
           ref=${{ github.ref }}
           rep=${{ github.repository }}
-          folder=release/$rep/${ref:10}/
-          mkdir -p $folder
+          folder=release/$rep/
           echo $ref
           echo $rep
-          echo $folder
+          mkdir -p $folder
+
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/mainnet/singularity/cluster_config_template.json /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/
           cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/run_cluster.sh /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/
-          cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18/ $folder
-          cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8/ $folder
-          cp -rf  /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows/ $folder
           echo "000"
-          cd $release/$rep/ && zip -r ${ref:10}.zip ${ref:10}/ && cp ${ref:10}.zip ../../../release/$rep/ && ls && cd ../../../
+          cd /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ && zip -r ${ref:10}.zip ubuntu18/ centos8/  windows/ && cd -
           echo "001"
           pwd
           echo "002"
+          cp /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/${ref:10}.zip  release/$rep/
           ls release/$rep/
-          echo $folder
           echo "111"
           ls
           echo "222"
