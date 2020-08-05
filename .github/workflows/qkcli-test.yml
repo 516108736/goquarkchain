@@ -26,6 +26,7 @@ jobs:
           ls goquarkchain
           echo "222"
           cp goquarkchain/tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
+          cp goquarkchain/tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && go build  && go install &&cd tester   && chmod +x ./runner.sh
           echo "111"
           cat testcases.txt
