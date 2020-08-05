@@ -1,1 +1,6 @@
 0-auction-initialization-pause
+1-auction-invalid-bid
+2-auction-extension
+3-auction-abandon-reserve-mint
+4-gas-reserve-user-authority
+5-gas-reserve-without-pay-as-gas
