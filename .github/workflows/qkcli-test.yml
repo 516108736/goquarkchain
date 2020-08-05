@@ -28,10 +28,6 @@ jobs:
           cp goquarkchain/tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
           cp goquarkchain/tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && go build  && go install &&cd tester   && chmod +x ./runner.sh
-          ./runner.sh 0-auction-initialization-pause
-          ./runner.sh 1-auction-invalid-bid
-          ./runner.sh 2-auction-extension
-          ./runner.sh 3-auction-abandon-reserve-mint
-          ./runner.sh 4-gas-reserve-user-authority
-          ./runner.sh 5-gas-reserve-without-pay-as-gas
-          ./runner.sh 6-gas-reserve-pay-as-gas
+          echo "111"
+          cat testcases.txt
+          chmod +x parallel_executor.sh && ./parallel_executor.sh
