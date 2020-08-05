@@ -1,5 +1,5 @@
 
-cd consensus/qkchash/native && make && cd -
+cd ../../consensus/qkchash/native && make && cd -
 go build && chmod +x cluster
 chmod +x ./run_cluster.sh  && ./run_cluster.sh ./cluster_config.json
 sleep 5
