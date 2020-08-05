@@ -280,6 +280,7 @@ func (v *MinorBlockValidator) ValidateState(mBlock, parent types.IBlock, statedb
 		return ErrInvalidMinorBlock
 	}
 	if block.GasUsed().Cmp(statedb.GetGasUsed()) != 0 {
+		fmt.Println("BBBBBBBBBBBBBBB", block.NumberU64(), block.Hash().String(), block.GasUsed(), statedb.GetGasUsed())
 		return fmt.Errorf("invalid gas used (remote: %d local: %d)", block.GasUsed().Uint64(), statedb.GetGasUsed())
 	}
 	// Validate the received block's bloom with the one derived from the generated receipts.
