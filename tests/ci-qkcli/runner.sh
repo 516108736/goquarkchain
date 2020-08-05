@@ -30,6 +30,9 @@ docker exec -i $container /bin/bash -c \
   'chmod +x ./start_go_devent.sh && ./start_go_devent.sh'
 echo "222"
 
+docker exec -i $container /bin/bash -c \
+  'cat master.log'
+
 #docker run --name $container -d -p 38391 $IMAGE bash -c \
 #  'git pull origin master && \
 #   mv testnet/ci-qkcli/constants.py.bac quarkchain/constants.py && \
@@ -45,6 +48,8 @@ while [ "$output" == "" ]; do
   echo "waiting for docker to start at test case $testcase"
   sleep 5
   output=$(qkcli query balance $empty_addr 0 --homeDir $tmp_dir 2>/dev/null)
+  echo "scf-----"$output
+  echo $tmp_dir
 done
 
 bash "${testcase}.sh" $tmp_dir
