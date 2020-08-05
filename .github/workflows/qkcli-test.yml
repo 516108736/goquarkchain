@@ -24,7 +24,7 @@ jobs:
           pwd
           ls
           echo "111"
-          ll /home/runner/work/goquarkchain/
+          ls /home/runner/work/goquarkchain/
           cp tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
           cp tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && cd tester && bash parallel_executor.sh
