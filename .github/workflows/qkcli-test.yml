@@ -27,4 +27,4 @@ jobs:
           echo "222"
           cp goquarkchain/tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
           cp goquarkchain/tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
-          cd qkcli && cd tester && go build && go install && ./runner.sh 0-auction-initialization-pause
+          cd qkcli && go build  && go install &&cd tester   && ./runner.sh 0-auction-initialization-pause
