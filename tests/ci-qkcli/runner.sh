@@ -21,11 +21,10 @@ docker pull $IMAGE
 # then trim the file extension
 container=$(echo "qkc-${testcase#*-}" | cut -f 1 -d '.')
 
-docker stop $container
-docker rm $container
+
 docker run --name $container -itd -p 38391 $IMAGE
-docker cp ../../tests/ci-qkcli/cluster_config.json $container:/go/src/github.com/QuarkChain/goquarkchain/cmd/cluster/
-docker cp ../../tests/ci-qkcli/start_go_devent.sh $container:/go/src/github.com/QuarkChain/goquarkchain/cmd/cluster/
+docker cp ../../goquarkchain/tests/ci-qkcli/cluster_config.json $container:/go/src/github.com/QuarkChain/goquarkchain/cmd/cluster/
+docker cp ../../goquarkchain/tests/ci-qkcli/start_go_devent.sh $container:/go/src/github.com/QuarkChain/goquarkchain/cmd/cluster/
 echo "111"
 docker exec -i $container /bin/bash -c \
   'chmod +x ./start_go_devent.sh && ./start_go_devent.sh'
