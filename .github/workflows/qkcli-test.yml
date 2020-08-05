@@ -25,6 +25,11 @@ jobs:
           ls
           echo "111"
           ls /home/runner/work/goquarkchain/
+          echo "22"
+          ls /home/runner/work/
+          echo "33"
+          ls /home/runner/
+          echo "44"
           cp tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
           cp tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && cd tester && bash parallel_executor.sh
