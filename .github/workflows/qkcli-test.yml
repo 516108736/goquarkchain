@@ -23,8 +23,8 @@ jobs:
       - run: |
           git clone https://github.com/516108736/goquarkchain
           echo "11"
-          ls
+          ls goquarkchain
           echo "222"
-          cp tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
-          cp tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
+          cp goquarkchain/tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
+          cp goquarkchain/tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && cd tester && bash parallel_executor.sh
