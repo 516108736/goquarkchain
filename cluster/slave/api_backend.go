@@ -250,8 +250,14 @@ func (s *SlaveBackend) GetMinorBlockExtraInfo(block *types.MinorBlock, branch ui
 }
 
 func (s *SlaveBackend) GetTransactionByHash(txHash common.Hash, branch uint32) (*types.MinorBlock, uint32, error) {
+	fmt.Println("SSSSSSSSSSSSSSSSSSSS---GetTransactionByHash", txHash.String(), branch)
 	if shard, ok := s.shards[branch]; ok {
 		minorBlock, idx := shard.MinorBlockChain.GetTransactionByHash(txHash)
+		//debug.PrintStack()
+		fmt.Println("SlaveBacke", txHash.String(), minorBlock == nil)
+		//fmt.Println("11", minorBlock.Hash())
+		//fmt.Println("2222", len(minorBlock.Transactions()))
+		fmt.Println("33333", idx)
 		return minorBlock, idx, nil
 	}
 	return nil, 0, ErrMsg("GetTransactionByHash")

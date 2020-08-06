@@ -1090,6 +1090,7 @@ func (m *MinorBlockChain) AddRootBlock(rBlock *types.RootBlock) (bool, error) {
 
 // GetTransactionByHash get tx by hash
 func (m *MinorBlockChain) GetTransactionByHash(hash common.Hash) (*types.MinorBlock, uint32) {
+	fmt.Println("GGGGGGGGGGG GetTransactionByHash ", hash.String())
 	_, mHash, txIndex := rawdb.ReadTransaction(m.db, hash)
 	if mHash == qkcCommon.EmptyHash { //TODO need? for test???
 		tx := m.txPool.all.Get(hash)
@@ -1098,8 +1099,10 @@ func (m *MinorBlockChain) GetTransactionByHash(hash common.Hash) (*types.MinorBl
 		}
 		temp := types.GetEmptyMinorBlock()
 		temp.AddTx(tx)
+		fmt.Println("TTTTTTTTTTTTT", len(temp.Transactions()))
 		return temp, 0
 	}
+	fmt.Println("GGGGGGGG-ans", len(m.GetMinorBlock(mHash).Transactions()), txIndex, m.GetMinorBlock(mHash) == nil)
 	return m.GetMinorBlock(mHash), txIndex
 }
 

@@ -372,11 +372,13 @@ func (p *PublicBlockChainAPI) GetMinorBlockByHeight(fullShardKey hexutil.Uint, h
 
 func (p *PublicBlockChainAPI) GetTransactionById(txID hexutil.Bytes) (map[string]interface{}, error) {
 	txHash, fullShardKey, err := encoder.IDDecoder(txID)
+	fmt.Println("PPPPPPPPPPPPPPPPPPPP---gggggg", txHash.String())
 	if err != nil {
 		return nil, err
 	}
 	fullShardIDByConfig, err := clusterCfg.Quarkchain.GetFullShardIdByFullShardKey(fullShardKey)
 	if err != nil {
+		fmt.Println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEE", err, txHash.String())
 		return nil, err
 	}
 	branch := account.Branch{Value: fullShardIDByConfig}
@@ -384,7 +386,12 @@ func (p *PublicBlockChainAPI) GetTransactionById(txID hexutil.Bytes) (map[string
 	if err != nil {
 		return nil, err
 	}
+	if minorBlock == nil {
+		return nil, err
+	}
+	fmt.Println("minorBlock==nil", minorBlock == nil, index, err)
 	if len(minorBlock.Transactions()) <= int(index) {
+		fmt.Println("388888", minorBlock.Hash().String(), len(minorBlock.Transactions()), index)
 		return nil, errors.New("index bigger than block's tx")
 	}
 	return encoder.TxEncoder(minorBlock, int(index))

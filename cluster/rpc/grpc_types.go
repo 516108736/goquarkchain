@@ -155,7 +155,7 @@ type GetTransactionRequest struct {
 }
 
 type GetTransactionResponse struct {
-	MinorBlock *types.MinorBlock `json:"minor_block" gencodec:"required"`
+	MinorBlock *types.MinorBlock `json:"minor_block" gencodec:"required" ser:"nil"`
 	Index      uint32            `json:"index" gencodec:"required"`
 }
 

@@ -261,6 +261,11 @@ func (s *SlaveConnection) GetTransactionByHash(txHash common.Hash, branch accoun
 	if err := serialize.Deserialize(serialize.NewByteBuffer(res.Data), &trans); err != nil {
 		return nil, 0, err
 	}
+	if trans.MinorBlock != nil {
+		fmt.Println("---GetTransactionByHash", txHash.String(), len(trans.MinorBlock.Transactions()), trans.Index)
+	} else {
+		fmt.Println("GetTransactionByHash minor block is nil")
+	}
 	return trans.MinorBlock, trans.Index, nil
 }
 
