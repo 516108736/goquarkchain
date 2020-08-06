@@ -22,12 +22,8 @@ jobs:
       - run: go version
       - run: |
           git clone https://github.com/516108736/goquarkchain
-          echo "11"
-          ls goquarkchain
-          echo "222"
+
           cp goquarkchain/tests/ci-qkcli/runner.sh qkcli/tester/runner.sh
-          cp goquarkchain/tests/ci-qkcli/testcases.txt  qkcli/tester/testcases.txt
           cd qkcli && go build  && go install &&cd tester   && chmod +x ./runner.sh
-          echo "111"
-          cat testcases.txt
+
           chmod +x parallel_executor.sh && ./parallel_executor.sh
