@@ -56,7 +56,7 @@ jobs:
           install: git mingw-w64-x86_64-toolchain ninja swig gcc make
       - name: windows-build
         run: |
-          pacman -S mingw-w64-x86_64-go
+          pacman -S --noconfirm mingw-w64-x86_64-go
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
           go version
