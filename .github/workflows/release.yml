@@ -70,11 +70,6 @@ jobs:
       - name: Install (Windows)
         shell: powershell
         run: |
-          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-          scoop install ninja --global
-          scoop install swig --global
-          scoop install gcc --global
-
           echo "CC=gcc" >> $GITHUB_ENV
           echo "CXX=g++" >> $GITHUB_ENV
 
@@ -82,6 +77,10 @@ jobs:
           echo $env
           echo $env:PATH
           echo $env >> $GITHUB_PATH
+          Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+          scoop install ninja --global
+          scoop install swig --global
+          scoop install gcc --global
 
       - name: Configure x64
         run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
