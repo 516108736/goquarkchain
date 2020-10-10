@@ -108,20 +108,20 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: cluster_centos
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8
+          path: ./cmd/cluster/centos8
 
 
       - name: Download cluster_ubuntu artifact
         uses: actions/download-artifact@master
         with:
           name: cluster_ubuntu
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18
+          path: ./cmd/cluster/ubuntu18
 
       - name: Download cluster_windows artifact
         uses: actions/download-artifact@master
         with:
           name: cluster_windows
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows
+          path: ./cmd/cluster/windows
 
       - name: mkdir folder
         run: |
@@ -165,20 +165,20 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: cluster_centos
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/centos8
+          path: ./cmd/cluster/centos8
 
 
       - name: Download cluster_ubuntu artifact
         uses: actions/download-artifact@master
         with:
           name: cluster_ubuntu
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/ubuntu18
+          path: ./cmd/cluster/ubuntu18
 
       - name: Download cluster_windows artifact
         uses: actions/download-artifact@master
         with:
           name: cluster_windows
-          path: /home/runner/work/goquarkchain/goquarkchain/cmd/cluster/windows
+          path: ./cmd/cluster/windows
 
       - name: mkdir folder
         run: |
@@ -209,5 +209,5 @@ jobs:
           aws-region: us-east-1
       - name: Deploy static site to S3 bucket
         run: |
-          sudo apt-get install awscli
+          sudo apt-get update && sudo apt-get install awscli -y
           aws s3 sync release/ s3://qkcmainnet-go/data/release --acl public-read
