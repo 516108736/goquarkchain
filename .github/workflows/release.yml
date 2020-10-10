@@ -53,10 +53,9 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git mingw-w64-x86_64-toolchain ninja swig gcc make
+          install: git mingw-w64-x86_64-toolchain ninja swig gcc make mingw-w64-x86_64-go
       - name: windows-build
         run: |
-          pacman -S --noconfirm mingw-w64-x86_64-go
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
           go version
