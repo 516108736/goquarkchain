@@ -79,7 +79,7 @@ jobs:
           echo "CXX=g++" >> $GITHUB_ENV
 
           # Scoop modifies the PATH so we make the modified PATH global.
-          echo "$env:PATH"  >> $GITHUB_PATH
+          echo "PATH=$env:PATH" >> $GITHUB_ENV
 
       - name: Configure x64
         run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
