@@ -53,7 +53,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git mingw-w64-x86_64-toolchain ninja swig gcc make mingw-w64-x86_64-go
+          install:  mingw-w64-x86_64-toolchain  swig gcc make mingw-w64-x86_64-go
       - name: windows-build
         run: |
           export GOROOT=/mingw64/lib/go
