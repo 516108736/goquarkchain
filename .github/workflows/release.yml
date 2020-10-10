@@ -53,12 +53,12 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install:  mingw-w64-x86_64-toolchain  swig gcc make mingw-w64-x86_64-go
+          install: mingw-w64-x86_64-toolchain swig gcc make
       - name: windows-build
         run: |
+          pacman -S --noconfirm mingw-w64-x86_64-go
           export GOROOT=/mingw64/lib/go
           export GOPATH=/mingw64
-          go version
           cd consensus/qkchash/native && make && cd -
           go version
           cd cmd/cluster && pwd && go build -o ./windows/cluster.exe
