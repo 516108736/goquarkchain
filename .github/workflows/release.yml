@@ -61,7 +61,7 @@ jobs:
 
         include:
           - name: windows-2019-gcc
-            os: windows-latest
+            os: windows-2019
             compiler: gcc
 
     steps:
