@@ -56,7 +56,10 @@ jobs:
           install: git mingw-w64-x86_64-toolchain ninja swig gcc make
       - name: windows-build
         run: |
-          echo 'export PATH=/c/Go/bin:$PATH' >> ~/.bashrc
+          pacman -S mingw-w64-x86_64-go
+          export GOROOT=/mingw64/lib/go
+          export GOPATH=/mingw64
+          go version
           cd consensus/qkchash/native && make && cd -
           go version
           cd cmd/cluster && pwd && go build -o ./windows/cluster.exe
