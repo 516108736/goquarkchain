@@ -56,9 +56,9 @@ jobs:
           install: git mingw-w64-x86_64-toolchain ninja swig gcc make
 
       - name: Install Go
-          uses: actions/setup-go@v2
-          with:
-            go-version: 1.14.1
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.1
       - name: windows-build
         run: |
           cd consensus/qkchash/native && make && cd -
