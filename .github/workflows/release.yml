@@ -75,11 +75,11 @@ jobs:
           scoop install swig --global
           scoop install gcc --global
 
-          echo >>$GITHUB_ENV CC=gcc
-          echo >>$GITHUB_ENV CXX=g++
+          echo "CC=gcc" >> $GITHUB_ENV
+          echo "CXX=g++" >> $GITHUB_ENV
 
           # Scoop modifies the PATH so we make the modified PATH global.
-          echo >>$GITHUB_PATH $env
+          echo $env:PATH  >> $GITHUB_PATH
 
       - name: Configure x64
         run: .github\workflows\vsenv.bat -arch=x64 -host_arch=x64
