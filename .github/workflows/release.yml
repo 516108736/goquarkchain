@@ -172,9 +172,14 @@ jobs:
           chmod -R 0755 ./cmd/cluster/windows/
 
           cd ./cmd/cluster/ && zip -r ${ref:10}.zip ubuntu18/ centos8/  windows/ && cd -
-          cd ./cmd/cluster/ && zip -r ubuntu_${ref:10}.zip ubuntu18/cluster && cd -
-          cp ./cmd/cluster/${ref:10}.zip  release/$rep/ && cd -
-          cp ./cmd/cluster/ubuntu_${ref:10}.zip release/$rep/ && cd -
+          cd ./cmd/cluster/ && zip -r ubuntu_${ref:10}.zip ubuntu18/cluster && ls &&  cd -
+
+          echo "111"
+          pwd
+          ls
+          echo "2222"
+          cp ./cmd/cluster/${ref:10}.zip  release/$rep/
+          cp ./cmd/cluster/ubuntu_${ref:10}.zip release/$rep/
 
           echo ${ref:10} > release/$rep/LATEST
       - name: Configure AWS Credentials
