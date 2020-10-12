@@ -168,13 +168,13 @@ jobs:
           cp -rf  ./cmd/cluster/run_cluster.sh ./cmd/cluster/windows/
 
           chmod -R 0755 ./cmd/cluster/ubuntu18/
-          chmod -R 0755 ./cmd/cluster/centos8/
+          chmod -R 0755 ./cmd/cluster/centos8/b
           chmod -R 0755 ./cmd/cluster/windows/
 
           cd ./cmd/cluster/ && zip -r ${ref:10}.zip ubuntu18/ centos8/  windows/ && cd -
-          cd ./cmd/cluster/ && zip -r ubuntu_${ref:10}.zip ubuntu18/cluster
-          cp ./cmd/cluster/${ref:10}.zip  release/$rep/
-          cp ./cmd/cluster/ubuntu_${ref:10}.zip release/$rep/
+          cd ./cmd/cluster/ && zip -r ubuntu_${ref:10}.zip ubuntu18/cluster && cd -
+          cp ./cmd/cluster/${ref:10}.zip  release/$rep/ && cd -
+          cp ./cmd/cluster/ubuntu_${ref:10}.zip release/$rep/ && cd -
 
           echo ${ref:10} > release/$rep/LATEST
       - name: Configure AWS Credentials
